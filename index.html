@@ -1,0 +1,805 @@
+<head> 
+	 <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+	<!-- css -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+
+	<!-- SVG.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
+
+	<!-- script -->
+	<script src="virtual_chinrest.js"></script>
+
+</head>
+        
+<style>
+	body {
+		font-size: 14pt;
+		font-family: Arial, Helvetica;
+		}
+	
+	#wrapper, #content { 
+		padding: 0;
+		width: 900px; 
+		margin: 0 auto; 
+	}
+
+	#submitButton {
+		display: none;
+		width: 200px;
+		margin: 200px auto;
+	}
+
+
+	.trialDiv {
+		margin: 0 auto;
+		display: none;
+	}
+
+	.trialQDiv {
+		border: 2px solid red;
+		padding-left: 5px;
+		width: 600px;
+		margin: 200px auto;
+		display: none;
+	}
+
+	.criticalDiv {
+		border: 2px solid red;
+		padding-left: 5px;
+		width: 600px;
+		margin: 200px auto;
+		display: none;
+	}
+
+
+	.elaborate_Div {
+		border: 2px solid red;
+		padding-left: 5px;
+		width: 600px;
+		margin: 200px auto;
+		display: none;
+	}
+
+	.trialImg {
+		width: 4in
+		height: 4in
+	}
+
+	#instructions {
+		display: none;
+		margin: 20% auto;
+		text-align: center;
+	}
+
+	#startbutton {
+		width: 110px;
+		text-align: center;
+		font-color: white;
+		border: 4px outset gray;
+		background: gray;
+		padding: 3px;
+		margin: 0 auto;
+	}
+
+	#startbutton:hover {
+		border: 4px inset gray;
+	}
+
+	#startExperiment {
+		color: white;
+		text-decoration: none;
+
+	}
+
+	#startExperiment:hover {
+		color: blue;
+	}
+	
+	#turker_unique_sequence_page {
+		display: none;
+		width: 700px;
+		margin: 20% auto;
+		text-align: center;
+	}
+	
+</style>
+
+
+
+<body id = "body" style = "text-align:center;">  
+
+		<!-- ~~~VIRTUAL CHINREST~~~ -->
+
+		<div id="content">
+            <div id="page-size">
+                <h3> Before we start the experiment, we need to do some calibrations! <br>
+                
+                First we need to find out what your monitor size is <br> <br> </h2> <h1><div onclick='clickToFull();' style='display:inline; cursor:pointer; color: red'><em><u> You must click this red text (to go into full screen mode) before continuing!</u></em></div></h1>
+                <br>
+                <p>Please use any credit card that you have available (it can also be a grocery store membership card, your drivers license, or anything that is of the same format), hold it onto the screen, and adjust the slider below to its size.</p>
+                
+                <p>(If you do not have access to a real card, you can use a ruler to measure image width to 3.37inch or 85.6mm, or make your best guess!)</p>
+                
+                <b style="font-style: italic">Make sure you put the card onto your screen.</b>
+                <br><br>
+                
+                <div id="container">
+                    <div id="slider"></div>
+                    <br>
+                    <img id="card" src="card.png" style="width: 5%" align="left">
+                    <br><br>
+                    <button class="btn btn-primary" onclick="configureBlindSpot()" id="cardtask_continue" disabled>Click here when you are done!</button>
+                </div>
+            </div>
+
+
+            <div id="blind-spot" style="visibility: hidden">
+                <!-- <h2 class="bolded-blue">Task 2: Where’s your blind spot?</h2> -->
+                <h3>Now, we will quickly test how far away you are sitting.</h3>
+                <p>You might know that vision tests by a doctor often involve chinrests; the doctor basically asks you to sit away from a screen in a specific distance. We do this here with a <i>virtual chinrest</i>.</p>
+                
+                <p><b><i>Before getting started, make sure you are in a comfortable position. You should be able to sit without moving for the entire experiment, i.e. about 5 minutes. </i></b></p>
+
+                <h3>Instructions</h3>
+    			
+                <p>1. Put your finger on <b>space bar</b> on the keyboard.</p>
+                <p>2. Close your right eye. <em>(Tips: it might be easier to cover your right eye by hand!)</em></p>
+                <p>3. Using your left eye, focus on the black square.</p>
+                <p>4. Click the button below to start the animation of the red ball. The <b style="color: red">red ball</b> will disappear into your eye's natural blind spot as it moves from right to left. Press the <i>Space</i> key as soon as the ball disappears from your eye sight, without moving your head.</p>
+                <br>
+                <p>Once you click to start, it will repeat this process <b>five</b> times. Please complete all five iterations, while keeping your right eye closed and your head/body in the same position! </p>
+                
+                <br>
+                <button class="btn btn-primary" id="start" onclick="animateBall()">Start</button>
+
+                <div id="svgDiv" style="width:1000px;height:200px;"></div>
+                Hit 'space' <div id="click" style='display:inline; color: red; font-weight: bold'>5</div> more times!
+            </div>
+
+            <div id="info" style='visibility:hidden'>
+                <h3 id="info-h">Estimated viewing distance (cm): </h3>
+                <p id="info-p"><b style="color: red"> Please stay at this distance for the experiment! <br> Click below to proceed to the experiment instructions. </b></p>
+                <p> <button id="switchToInstructions"> Continue to Experiment </p>
+                <!-- hide inputs here for viewing data -->
+                <input type="hidden" name="PXperMM" value="-99" id="PXperMM">
+                <input type="hidden" name="distMM" value="-99" id="distMM">
+                <input type="hidden" name="visAng" value="-99" id="visAng">
+                <input type="hidden" name="imSize" value="-99" id="imSize">
+                
+            </div>
+        </div>
+
+
+
+
+	<!-- 	~~~EXPERIMENT~~~	 -->
+	
+	<div id="instructions" >
+		<p>A series of images will show briefly on the screen in a sequence. This will happen for 11 trials, i.e. 11 image sequences. </p> 
+		<p> At the end of each trial, you will be asked the following question: <br> 
+		<b><i><u>Does the last picture in the sequence have a human face in the middle of the image?</u></i></b></p>
+		<br><br>
+		<p>In order to get credit for this HIT, you must fully complete the task. </p>
+		<br>
+		<i>Examples:</i>
+		<br>
+		<img src="examples.png" width="70%" alt="example images for task">
+		<br><br>
+
+		<div id="startbutton">
+			<p><a href="#" id="startExperiment">Start Experiment </a>
+			</p>
+			<input type="hidden" name="subjectID" value="-99" id="sID">
+		</div>
+	</div>
+	
+	<!-- 	ACTUAL TRIAL PRESENTATION 	 -->
+	
+	<!-- trial1  -->
+	<div id="trial1" class="trialDiv">
+		<video autoplay playsinline muted src="" id="trialImg1" class="trialImg" preload="auto">
+	Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ1" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question1" id="question1n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question1" id="question1y" value="1" >yes</p>
+	
+		<input type="hidden" name="question1RT" value="-99" id="RT1">
+	</div>
+
+
+	<!-- trial2  -->
+	<div id="trial2" class="trialDiv">
+		<video  autoplay playsinline muted src="" id="trialImg2" class="trialImg" preload="auto">
+	Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ2" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question2" id="question2n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question2" id="question2y" value="1" >yes</p>
+	
+		<input type="hidden" name="question2RT" value="-99" id="RT2">
+	</div>
+
+
+	<!-- trial3  -->
+	<div id="trial3" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg3" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ3" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question3" id="question3n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question3" id="question3y" value="1" >yes</p>
+	
+		<input type="hidden" name="question3RT" value="-99" id="RT3">
+	</div>
+
+
+	<!-- trial4  -->
+	<div id="trial4" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg4" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ4" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question4" id="question4n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question4" id="question4y" value="1" >yes</p>
+	
+		<input type="hidden" name="question4RT" value="-99" id="RT4">
+	</div>
+
+
+	<!-- trial5  -->
+	<div id="trial5" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg5" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ5" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question5" id="question5n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question5" id="question5y" value="1" >yes</p>
+	
+		<input type="hidden" name="question5RT" value="-99" id="RT5">
+	</div>
+
+	
+	<!-- trial6  -->
+	<div id="trial6" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg6" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ6" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question6" id="question6n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question6" id="question6y" value="1" >yes</p>
+	
+		<input type="hidden" name="question6RT" value="-99" id="RT6">
+	</div>
+
+
+	<!-- trial7  -->
+	<div id="trial7" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg7" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ7" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question7" id="question7n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question7" id="question7y" value="1" >yes</p>
+	
+		<input type="hidden" name="question7RT" value="-99" id="RT7">
+	</div>
+
+
+	<!-- trial8  -->
+	<div id="trial8" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg8" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ8" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question8" id="question8n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question8" id="question8y" value="1" >yes</p>
+	
+		<input type="hidden" name="question8RT" value="-99" id="RT8">
+	</div>
+
+
+	<!-- trial9  -->
+	<div id="trial9" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg9" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	
+	</div>
+
+	<div id="trialQ9" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question9" id="question9n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question9" id="question9y" value="1" >yes</p>
+	
+		<input type="hidden" name="question9RT" value="-99" id="RT9">
+	</div>
+
+
+	<!-- trial10  -->
+	<div id="trial10" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg10" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div id="trialQ10" class="trialQDiv">
+		<p> Did the last image have a human face in the middle? </p>
+		<p><input type="radio" class="responsebutton" name="question10" id="question10n" value="-1" >no</p>
+		<p><input type="radio" class="responsebutton" name="question10" id="question10y" value="1" >yes</p>
+		
+		<input type="hidden" name="question10RT" value="-99" id="RT10">
+	</div>
+
+
+
+	<!-- CRITICAL TRIAL -->
+	<div id="trial11" class="trialDiv">
+		<video  autoplay muted src="" id="trialImg11" class="trialImg">
+		Your browser does not support the video tag.
+		</video>
+	</div>
+
+
+
+	<!-- QUESTIONS  -->
+	
+	<!-- Q1 -->
+
+	<div id="trial10followup1radio" class="criticalDiv">
+		<h3 style="color: red"><b> Did you notice anything strange or different about that last trial? </b> </h3>
+		<label class="radio-inline">
+			<p><input type="radio" class="responsebuttonQ" name="crit1" id="crit1n" value="-1" ><b>No</b>, I did not notice anything strange/different about the last trial</p>
+		</label>
+		<label class="radio-inline">
+			<p><input type="radio" class="responsebuttonQ" name="crit1" id="crit1y" value="1" ><b>Yes</b>, I did notice something strange/different about the last trial</p>
+		</label>
+		<input type="hidden" name="critRT1" value="-99" id="critRT1">
+	
+	</div>
+ 
+	<div id="elab_1" class="elaborate_Div">
+		<p> Please describe: </p>
+		<p><textarea class="elabBox" name="elab1" id="elab1" rows="5" cols="33" onKeyDown="if(event.keyCode === 32) {$('#elab1').val($('#elab1').val()+' ');}"> </textarea> </p>
+		<input type="submit" value="Next" id="question1submit">
+	</div>
+
+
+        
+
+
+	<!-- Q2 -->
+	<div id="trial10followup2radio" class="criticalDiv">
+		<h3 style="color: red"><b> If I were to tell you that there was something different about that last trial, could you tell me what it was?  </b> </h3>
+		<p><input type="radio" class="responsebuttonQ" name="crit2" id="crit2n" value="-1" >no</p>
+		<p><input type="radio" class="responsebuttonQ" name="crit2" id="crit2y" value="1" >yes</p>
+	
+		<input type="hidden" name="critRT2" value="-99" id="critRT2">
+	</div>
+
+
+	<div id="elab_2" class="elaborate_Div">
+		<p> Please describe: </p>
+		<p><textarea class="elabBox" name="elab2" id="elab2" rows="5" cols="33" onKeyDown="if(event.keyCode === 32) {$('#elab2').val($('#elab2').val()+' ');}"> </textarea> </p>
+		<input type="submit" value="Next" id="question2submit">
+	</div>
+
+
+
+
+	<!-- Q3 -->
+	<div id="trial10followup3radio" class="criticalDiv">
+		<h3 style="color: red"><b> If I were to tell you that there was something different about the <i>very last image</i> you saw in the last trial, could you tell me what it was?  </b> </h3>
+		<p><input type="radio" class="responsebuttonQ" name="crit3" id="crit3n" value="-1" >no</p>
+		<p><input type="radio" class="responsebuttonQ" name="crit3" id="crit3y" value="1" >yes</p>
+		<input type="hidden" name="critRT3" value="-99" id="critRT3">
+	</div>
+
+
+	<div id="elab_3" class="elaborate_Div">
+		<p> Please describe: </p>
+		<p><textarea class="elabBox" name="elab3" id="elab3" rows="5" cols="33" onKeyDown="if(event.keyCode === 32) {$('#elab3').val($('#elab3').val()+' ');}"> </textarea> </p>
+		<input type="submit" value="Next" id="question3submit">
+	</div>
+	
+	
+	
+	
+	
+	<div id="turker_unique_sequence_page">
+	<h3> Thanks for participating! <h3>
+	<br><br><br>
+	<h2 style="color: red"><i><b>You must copy-paste the code below into the MTurk page to have your work count!</b></i></h2>
+	<br><br>
+	<p id="actual_turker_unique_sequence"> </p>
+	<br><br><br>
+	<p> (Once you have successfully copied your code to the MTurk page, you can close this tab.) </p>
+	</div>
+
+</body>  
+
+<script>
+
+	function clickToFull() {
+		fullScreen(); 
+		registerClick();
+		document.getElementById('cardtask_continue').disabled = false;
+	}
+
+	// https://www.dyn-web.com/javascript/viewport/ vv
+
+	function dw_getWindowDims() {
+		var doc = document, w = window;
+		var docEl = (doc.compatMode && doc.compatMode === 'CSS1Compat')?
+				doc.documentElement: doc.body;
+	
+		var width = docEl.clientWidth;
+		var height = docEl.clientHeight;
+	
+		// mobile zoomed in?
+		if ( w.innerWidth && width > w.innerWidth ) {
+			width = w.innerWidth;
+			height = w.innerHeight;
+		}
+	
+		return {width: width, height: height};
+	}
+	
+	function getStimSizeInPX(distanceMM, pix2MM) {
+		var size_mm = 2*distanceMM*Math.tan(28/(2*57.2958));
+		var size_px = size_mm*pix2MM;
+		return size_px;
+	}
+	
+	function calc_visAng(distanceMM, sizeStim_px, px2mm) {
+		var sizeStim_MM = sizeStim_px/px2mm;
+		var V = (2*Math.atan(sizeStim_MM/(2*distanceMM)))*57.2958;
+		var V = Math.round(V);
+		return V;
+	}
+
+	// go from Virtual Chinrest to actual instructions: 
+	function showInstructions() {
+		// also set new variables to determine image size, etc. 
+		$('#PXperMM').val(data["px2mm"]);
+		$('#distMM').val(data["viewDistance_mm"]);
+		var visual_angle = 28;
+		var vp = dw_getWindowDims();
+		var maxSizePX = Math.min(vp.width, vp.height);
+		var setsize_stim_PX = getStimSizeInPX(data["viewDistance_mm"], data["px2mm"]);
+		if (setsize_stim_PX > maxSizePX) {
+			var setsize_stim_PX = maxSizePX;
+			var visual_angle = calc_visAng(data["viewDistance_mm"], setsize_stim_PX, data["px2mm"]);
+		}
+		$('#visAng').val(visual_angle);
+		$('#imSize').val(setsize_stim_PX);
+		window.vidSize = Math.round(setsize_stim_PX);
+		console.log($('#visAng'))
+		loadTrials()
+		
+		$('#content').hide()
+		$('#instructions').show();
+	}
+
+
+	function Enable_continueButton_1() {
+		document.getElementById('cardtask_continue').disabled = 'false';
+	
+	}
+
+
+
+	// Function to generate random number  
+	function genNum(min, max) {  
+		return Math.floor(Math.random() * (max - min) + min); 
+	}  
+	
+	
+	
+	// set ID and other fixed variables 
+	subjID = genNum(1,50);
+	var cond = 'videos/';
+	var nTrials=11;
+	var path = cond + '/s' + subjID + '/';
+	var trialStruct = new Array();
+	var criticalStruct = new Array();
+
+    // set the correct trial video paths in a loop
+    function loadTrials() {
+		for (i = 1; i < nTrials+1; i++) {
+		document.getElementById('trialImg'+i).src = path+'trial'+i+'.mp4';
+		document.getElementById('trialImg'+i).height = window.vidSize;
+		document.getElementById('trialImg'+i).width = window.vidSize;
+		// --- set new size here using GetStimSize() --- 
+		}
+	}
+
+
+
+	// --- functions for stimulus presentation --- 
+	
+	// initialize variables
+	var curTrial=1;
+	var startTrialTime;
+
+
+	// set up the function that flips from trial image to trial question 
+	function EnableButton(whatTrialN) {
+		setTimeout(function() {
+			document.getElementById('trial'+whatTrialN).style.display = "none";
+    		document.getElementById('trialQ'+whatTrialN).style.display = "block";
+    		document.body.style.cursor = "";
+    		}, document.getElementById('trialImg'+whatTrialN).duration*1000 + 1500) 
+	}
+
+
+	// function that actually shows the image and calls function to flip from stim to question
+	function showImage(whichImage) {
+		$('#trial' + whichImage).show();
+		document.body.style.cursor = "none";
+		EnableButton(whichImage);
+	}
+	
+	function showCriticalTrial() {
+		$('#trial11').show();
+		document.body.style.cursor = "none";
+		setTimeout(function() {
+			document.getElementById('trial11').style.display = "none";
+    		document.body.style.cursor = "";
+    		showQ1();
+    		}, document.getElementById('trialImg11').duration*1000 + 1500) 
+	}
+
+
+	// initial function that presents just the first trial by initializing then calling above general function  
+	function showFirstTrial() {
+		$('#sID').val(subjID);
+		$('#instructions').hide();
+		showImage(1);
+		startTrialTime = new Date();
+		startExptTime = startTrialTime;
+	}
+
+	// function that switches to new trial after response is made for previous trial, or to questions if all trials done
+	function buttonClicked() {
+		var curTime = new Date();
+		var rt = (curTime - startTrialTime) - (document.getElementById('trialImg'+curTrial).duration*1000 + 1500);
+		$('#RT' + curTrial).val(rt);
+		console.log(rt);
+		$('#trialQ' + curTrial).hide();
+		curTrial++;
+		if (curTrial == nTrials) {
+			showCriticalTrial();
+		}
+		else {
+			showImage(curTrial);
+			startTrialTime = new Date();
+		}
+	}
+
+ 	// --- functions for QUESTION presentation --- 
+ 	
+ 	// initialize variables 
+	var curQ=1;
+	nq = 3;
+
+	// function that shows a question 
+	function startQuestion(whichQ) {
+		$('#trial10followup' + whichQ +'radio').show();
+	}
+
+	// initial function to show the first question  
+	function showQ1() {
+		$('#trial10').hide();
+		startQuestion(1);
+		startQtime = new Date();
+	}
+
+	// function that starts elaboration if answer to question was "yes"
+	function startElab(currentQ) {
+	console.log('startElab called');
+		$('#elab_' + currentQ).show();
+		$('#question'+currentQ+'submit').click(function() {
+			$('#elab_' + currentQ).hide();
+			experimentDone();
+		});
+	}
+
+	// function that switches to new question after responses are made, or if all questions done, shows submit button for end of experiment
+	function buttonClicked_post() {
+	console.log('buttonClicked_post called');
+		var curTime = new Date();
+		var rt = curTime - startQtime;
+		$('#critRT' + curQ).val(rt);
+		console.log(rt);
+		$('#trial10followup' + curQ + 'radio').hide();
+		var choseY = document.getElementById('crit'+ curQ +'y').checked;
+		var choseN = document.getElementById('crit'+ curQ +'n').checked;
+		if (choseN && curQ < nq) {
+			curQ++
+			startQuestion(curQ)
+		}
+		else if (choseY) {
+			startElab(curQ)
+		}
+		else {
+			experimentDone();
+		}
+	}
+
+	// function to get range, is unused?? 
+	function range(start, end) {
+	  return Array(end - start + 1).fill().map((_, idx) => start + idx)
+	}
+
+
+function generateUUID() { // Public Domain/MIT
+    var d = new Date().getTime();//Timestamp
+    var d2 = (performance && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16;//random number between 0 and 16
+        if(d > 0){//Use timestamp until depleted
+            r = (d + r)%16 | 0;
+            d = Math.floor(d/16);
+        } else {//Use microseconds since page-load if supported
+            r = (d2 + r)%16 | 0;
+            d2 = Math.floor(d2/16);
+        }
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+	UID = generateUUID();
+	document.getElementById('actual_turker_unique_sequence').innerHTML = UID;
+
+	function experimentDone() {
+		console.log('experimentDone called');
+		// run output stuff here too!!! 
+		saveToFirebase();
+		
+		$('#turker_unique_sequence_page').show();
+		
+	}
+	
+	
+    function create_trialStructs() {
+	console.log('create_trialStructs called');
+		// substructure for trials 1-10
+		for (i = 1; i < nTrials; i++) {
+			var curResp = -99;
+			var choseY = document.getElementById('question' + i + 'y').checked;
+			var choseN = document.getElementById('question'+ i +'n').checked;
+			if (choseY) {
+				var curResp = 1;
+			} else if (choseN) {
+				var curResp = 0;
+			} 
+				
+			trialStruct.push({
+			  'trialN': i,
+			  'trial_response': curResp,
+			  'trial_RT': document.getElementById('RT'+i).value.toString(),
+			});
+		}
+		
+		// substructure for critical questions 
+		for (i = 1; i < nq + 1; i++) {
+			
+			var curResp = -99;
+			var choseY = document.getElementById('crit' + i + 'y').checked;
+			var choseN = document.getElementById('crit'+ i +'n').checked;
+			if (choseY) {
+				var curResp = 1;
+			} else if (choseN) {
+				var curResp = 0;
+			} 
+			
+			criticalStruct.push({
+				'critical_button_RT': document.getElementById('critRT' + i).value.toString(), 
+				'critical_button_response': curResp,
+				'critical_button_elab': document.getElementById('elab' + i).value,
+			})
+			}
+	}
+		
+		
+		
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAmf5uRibCCfqTgMYUIG9UTctkNYAYEPo8",
+    authDomain: "facestream-7e0bd.firebaseapp.com",
+    projectId: "facestream-7e0bd",
+    storageBucket: "facestream-7e0bd.appspot.com",
+    messagingSenderId: "64016326477",
+    appId: "1:64016326477:web:c3082aea36e8758fd46104"
+  };
+  console.log(firebaseConfig);
+  
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+// FIREBASE INFO
+
+function saveToFirebase() {
+	create_trialStructs()
+	console.log('saveToFirebase called');
+	var totalTime = (new Date()) - startExptTime;
+	var day = new Date();
+    var d = {
+	    "subjID": subjID,
+	    "UID": UID,
+		"curTime": day.toString(),
+		"userAgent": navigator.userAgent,
+		"windowWidth": $(window).width(),
+		"windowHeight": $(window).height(),
+		"screenWidth": screen.width,
+		"screenHeight": screen.height,   
+		"totalTime": totalTime.toString(),
+		"trialStruct": trialStruct, 
+		"criticalStruct": criticalStruct, 
+		"chinrest_data": data,
+		"visual_angle": document.getElementById('visAng').value
+	};
+
+    firebase.database().ref('data_outputs').push().set(d)
+     
+}
+
+
+	
+	
+	// jquery scripts that call functions to start main wrapper functions upon certain actions 
+	// e.g. when the user clicks to start experiment, it runs the function showFirstTrial
+	
+	$('#switchToInstructions').click(showInstructions);
+	$('#startExperiment').click(showFirstTrial);
+	$('.responsebutton').click(buttonClicked);
+	$('.responsebuttonQ').click(buttonClicked_post);
+
+
+
+
+
+</script>
+
